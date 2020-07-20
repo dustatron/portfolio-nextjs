@@ -3,7 +3,7 @@ import imageUrlBuilder from '@sanity/image-url';
 import BlockContent from '@sanity/block-content-to-react';
 import groq from 'groq';
 
-import style from '../../scss/project.module.scss';
+import style from '../../scss/pages/_project.module.scss';
 
 const project = (props) => {
   const {

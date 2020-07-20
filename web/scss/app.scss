@@ -1,0 +1,102 @@
+@import './main.scss';
+
+html,
+body {
+  height: 100%;
+  // This defines what 1rem is
+  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+  line-height: 1.1;
+  color: $black;
+  display: flex;
+  justify-content: center;
+  a:hover,
+  a:visited,
+  a:link,
+  a:active {
+    text-decoration: none;
+  }
+
+  @include respond(tab-land) {
+    // width < 1200?
+    font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
+  }
+
+  @include respond(tab-port) {
+    // width < 900?
+    font-size: 50%; //1 rem = 8px, 8/16 = 50%
+  }
+
+  // @include respond(big-desktop) {
+  //   // font-size: 75%; //1rem = 12, 12/16
+  // }
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.grid-container {
+  width: 1400px;
+  // min-width: 1300px;
+  position: relative;
+  margin: 0 2%;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  grid-template-areas: '. . .';
+  @include respond(tab-land) {
+    margin: 0;
+    width: auto;
+    max-width: 100%;
+  }
+
+  &-left {
+    justify-self: right;
+    // font-weight: 900;
+    // width: 100%;
+
+    @include respond(tab-port) {
+      position: fixed;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      background-color: white;
+      width: 100%;
+      height: 3.5em;
+      margin: 0;
+    }
+  }
+  &-right {
+    @include respond(tab-land) {
+      display: none;
+    }
+  }
+  &-center {
+    justify-self: stretch;
+    background: $simple-grey;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.1);
+    @include respond(tab-land) {
+      width: 100%;
+    }
+  }
+  @include respond(tab-port) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.mobile-show {
+  display: none;
+  @include respond(tab-port) {
+    display: inline;
+  }
+}
+
+.desktop-show {
+  @include respond(tab-port) {
+    display: none;
+  }
+}
