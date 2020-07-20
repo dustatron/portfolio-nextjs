@@ -1,0 +1,104 @@
+@import '../main.scss';
+
+.contact {
+  font-size: $default-font-size;
+  color: $white;
+  width: 100%;
+  height: 50rem;
+  background: $light-blue;
+  margin-bottom: 10em;
+  @include respond(tab-port) {
+    height: auto;
+    padding-bottom: 3em;
+  }
+
+  &-title {
+    font-size: $header-size;
+    font-weight: $header-weight;
+    width: 100%;
+    text-align: center;
+    padding: $title-padding;
+  }
+
+  &-paragraph {
+    letter-spacing: 0.5px;
+    width: 45%;
+    margin: auto;
+    font-weight: 300;
+    text-align: center;
+    a,
+    a:active {
+      color: white;
+    }
+    &-name {
+      font-weight: 600;
+      font-size: 1.8rem;
+    }
+    @include respond(tab-port) {
+      width: 90%;
+      font-size: 2rem;
+    }
+  }
+  &-buttons {
+    margin: 7rem auto;
+    width: 70%;
+    text-align: center;
+
+    button {
+      text-transform: uppercase;
+      font-weight: 600;
+      // padding: 1rem 2rem;
+      width: 140px;
+      height: 40px;
+      color: $white;
+      border: 0;
+      border-radius: 4px;
+      margin-right: 10px;
+      font-size: 1.3em;
+      outline: none;
+      transition: all 0.3s;
+      @include respond(tab-port) {
+        margin-top: 1em;
+      }
+      &:hover {
+        transform: scale(1.03);
+      }
+      &:active {
+        box-shadow: 0px 2px 0px 0px #353535;
+        transform: translateY(5px);
+      }
+      img {
+        margin-right: 5px;
+        width: 19px;
+      }
+    } // Button end
+    &-email {
+      background: #4868ad;
+      box-shadow: 0px 5px 0px 0px #2f4370;
+      &:active {
+        box-shadow: 0px 2px 0px 0px #2f4370;
+        transform: translateY(5px);
+      }
+    }
+    &-linkedin {
+      background: #0077b5;
+      box-shadow: 0px 5px 0px 0px #003e5e;
+      &:active {
+        box-shadow: 0px 2px 0px 0px #003e5e;
+        transform: translateY(5px);
+      }
+    }
+    &-twitter {
+      background: #00aced;
+      box-shadow: 0px 5px 0px 0px #006d96;
+      &:active {
+        box-shadow: 0px 2px 0px 0px #006d96;
+        transform: translateY(5px);
+      }
+    }
+    &-github {
+      background: #4f4f4f;
+      box-shadow: 0px 5px 0px 0px #353535;
+    }
+  }
+}

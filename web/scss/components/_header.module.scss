@@ -1,0 +1,67 @@
+@import '../main.scss';
+.header {
+  background: $light-blue;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.07);
+  position: relative;
+  height: 320px;
+  width: 100%;
+  overflow: hidden;
+
+  @include respond(tab-land) {
+    max-height: 250px;
+  }
+
+  @include respond(phone) {
+    height: 200px;
+  }
+  img {
+    width: 100%;
+    @include respond(tab-land) {
+      width: 115%;
+    }
+    @include respond(tab-port) {
+      width: 155%;
+    }
+  }
+  &-title {
+    color: $white;
+    font-weight: bold;
+    font-size: 3.6rem;
+    position: absolute;
+    bottom: 1.6em;
+    left: 1.2em;
+  }
+  &-links {
+    position: absolute;
+    color: $white;
+    bottom: 30%;
+    right: 20px;
+    @include respond(tab-port) {
+      bottom: 10%;
+
+      // display: flex;
+      // justify-content: space-between;
+      // width: 100%;
+    }
+    @include respond(phone) {
+      display: flex;
+      justify-content: space-between;
+      bottom: 5px;
+      right: 25%;
+      width: 50%;
+    }
+
+    img {
+      transition: all 0.3s;
+      &:hover {
+        transform: scale(1.2);
+      }
+      display: block;
+      width: 25px;
+      padding-top: 20px;
+      @include respond(tab-port) {
+        width: 18px;
+      }
+    }
+  }
+}

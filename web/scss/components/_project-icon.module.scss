@@ -1,0 +1,79 @@
+@import '../main.scss';
+.project-icon {
+  background: white;
+  width: 350px;
+  height: 266px;
+  margin: 2% 20px 20px 2%;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  z-index: 0;
+  @include respond(phone) {
+    margin: 10px auto;
+  }
+
+  @include respond(tab-land) {
+    max-width: 450px;
+    min-width: 70%;
+    height: 350px;
+    margin: 10px auto;
+    @include respond(tab-port) {
+      height: 220px;
+    }
+  }
+
+  &-bar {
+    // z-index: `;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    background: $bar-grey;
+    height: 30px;
+    font-weight: 400;
+    font-size: 0.9em;
+    color: $mid-grey;
+    display: flex;
+
+    @include respond(tab-land) {
+      z-index: 1;
+    }
+
+    ul {
+      width: 20%;
+      padding-left: 10px;
+      display: flex;
+    }
+    li {
+      display: block;
+    }
+    &-circle {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+    &-title {
+      // padding-left: 15%;
+      width: 60%;
+      text-align: center;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+  }
+  &-img {
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+.red {
+  background-color: $red;
+}
+.orange {
+  background-color: $orange;
+}
+.green {
+  background-color: $green;
+}

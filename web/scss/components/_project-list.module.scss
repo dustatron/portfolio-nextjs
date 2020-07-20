@@ -1,0 +1,76 @@
+@import '../main.scss';
+
+.project-list {
+  font-size: $default-font-size;
+  color: $black;
+  margin-bottom: 8em;
+
+  &-title {
+    padding: $title-padding;
+    text-align: center;
+    font-size: $header-size;
+    font-weight: $header-weight;
+    /* My Recent Projects */
+    text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+  }
+  &-tech {
+    user-select: none;
+    text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: auto;
+    width: 90%;
+    justify-content: center;
+    @include respond(tab-port) {
+      font-size: 1.5rem;
+      width: 100%;
+    }
+
+    &-box {
+      cursor: pointer;
+      width: 110px;
+      max-height: 30px;
+      padding: 1% 0;
+      text-align: center;
+      margin: 0 10px 10px 0px;
+      color: $white;
+      background: $black;
+      border-radius: 3px;
+      transition: all 0.2s;
+      box-shadow: 0px 3px 0px #5d6ea7;
+      &:hover {
+        transform: scale(1.08);
+        transform: translateY(-4px);
+        box-shadow: 0px 6px 0px #5d6ea7;
+      }
+      &:active {
+        transform: scale(1);
+        transform: translateY(0px);
+        box-shadow: 0px 2px 0px #5d6ea7;
+        background: $light-blue;
+      }
+      @include respond(tab-port) {
+        width: 80px;
+        margin: 0 8px 8px 0px;
+      }
+    }
+  }
+  &-icons {
+    width: 90%;
+    min-height: 700px;
+    margin: 2em auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    @include respond(tab-port) {
+      min-height: 300px;
+      flex-direction: column;
+      margin: 2em 3%;
+    }
+  }
+}
+
+.active-box {
+  background: $light-blue;
+}

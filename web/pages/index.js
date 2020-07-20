@@ -7,11 +7,12 @@ import ProjectList from '../components/ProjectList';
 import Contact from '../components/Contact';
 
 export default function Home(props) {
+  const { projects, categories } = props;
   return (
     <div>
       <Header />
       <About />
-      <ProjectList projects={props.projects} />
+      <ProjectList projects={projects} categories={categories} />
       <Contact />
     </div>
   );
@@ -20,5 +21,8 @@ export default function Home(props) {
 Home.getInitialProps = async () => ({
   projects: await client.fetch(groq`
     *[_type == 'project']|order(publishedAt desc)
+  `),
+  categories: await client.fetch(groq`
+    *[_type == 'category']
   `),
 });
