@@ -3,6 +3,8 @@ import imageUrlBuilder from '@sanity/image-url';
 import BlockContent from '@sanity/block-content-to-react';
 import groq from 'groq';
 
+import style from '../../scss/project.module.scss';
+
 const project = (props) => {
   const {
     title = 'Missing title',
@@ -18,7 +20,7 @@ const project = (props) => {
   };
   return (
     <div>
-      <h1>Project</h1>
+      <h1 className={style.title}>Project</h1>
       <h2>{title}</h2>
       <h3>{subtitle}</h3>
       <BlockContent
@@ -33,10 +35,12 @@ const project = (props) => {
         {...client.config()}
       />
       {categories && (
-        <ul>
+        <ul className={style.tech}>
           Technologies
           {categories.map((category) => (
-            <li key={category}>{category}</li>
+            <li className={style['tech-item']} key={category}>
+              {category}
+            </li>
           ))}
         </ul>
       )}

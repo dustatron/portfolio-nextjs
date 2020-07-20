@@ -1,0 +1,24 @@
+.title {
+  color: red;
+}
+
+.tech {
+  margin: 20px auto;
+  padding: 20px;
+  width: 50%;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-weight: 800;
+  display: flex;
+  li {
+    list-style: none;
+  }
+
+  &-item {
+    margin: 0 5px;
+    padding: 5px;
+    color: white;
+    background: #333;
+    border-radius: 7px;
+  }
+}
