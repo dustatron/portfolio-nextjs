@@ -6,8 +6,12 @@ const About = ({ content }) => {
   const { title = '', body = [] } = content;
   return (
     <div className={s['about']}>
-      <div className={s['about-top']} id='about'>
-        <img src='/media/icons/tech-stuff-1.svg' alt='tech-stuff graphic' />
+      <div className={s['about-top']}>
+        <img
+          src='/media/icons/tech-stuff-1.svg'
+          alt='tech-stuff graphic'
+          id='about'
+        />
       </div>
       <div className={s['about-bottom']}>
         <div className={s['about-bottom-title']}>{title}</div>

@@ -5,8 +5,6 @@ import BlockContent from '@sanity/block-content-to-react';
 import groq from 'groq';
 import { useTransition, animated } from 'react-spring';
 
-import Link from 'next/link';
-
 import s from '../../scss/pages/_project.module.scss';
 
 // get image link

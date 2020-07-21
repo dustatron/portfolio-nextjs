@@ -30,8 +30,10 @@ const ProjectList = (props) => {
   };
 
   return (
-    <div className={s['project-list']} id='projects'>
-      <div className={s['project-list-title']}>My Recent Projects</div>
+    <div className={s['project-list']}>
+      <div className={s['project-list-title']} id='projects'>
+        My Recent Projects
+      </div>
       <div className={s['project-list-tech']}>
         {categories.map((tech, index) => (
           <div
