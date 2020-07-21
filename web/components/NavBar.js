@@ -1,10 +1,16 @@
 // import Link from 'next/Link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import s from '../scss/components/_navbar.module.scss';
 import LinkSmoothScroll from '../utils/LinkSmoothScroll';
 
 const NavBar = () => {
-  const [currentPath, setCurrentPath] = useState('home');
+  const router = useRouter();
+  const [currentPath, setCurrentPath] = useState('');
+
+  useEffect(() => {
+    setCurrentPath(router.asPath);
+  }, []);
 
   const handleClick = (val) => {
     setCurrentPath(val);
@@ -19,12 +25,12 @@ const NavBar = () => {
       <ul className={s['navbar-list']}>
         <li
           onClick={() => {
-            handleClick('home');
+            handleClick('/#top');
           }}>
           <LinkSmoothScroll href='/#top'>
             <a
               className={`${s[`navbar-list-item`]} ${
-                currentPath === 'home' ? s.selected : ''
+                currentPath === '/#top' ? s.selected : ''
               }`}>
               <div className={`${s['navbar-list-item-img']} `}>
                 <img src='/media/icons/home.png' alt='home' />
@@ -35,12 +41,12 @@ const NavBar = () => {
         </li>
         <li
           onClick={() => {
-            handleClick('about');
+            handleClick('/#about');
           }}>
           <LinkSmoothScroll href='/#about'>
             <a
               className={`${s[`navbar-list-item`]} ${
-                currentPath === 'about' ? s.selected : ''
+                currentPath === '/#about' ? s.selected : ''
               }`}>
               <div className={s['navbar-list-item-img']}>
                 <img src='/media/icons/rocket.png' alt='About' />
@@ -51,12 +57,12 @@ const NavBar = () => {
         </li>
         <li
           onClick={() => {
-            handleClick('projects');
+            handleClick('/#projects');
           }}>
           <LinkSmoothScroll href='/#projects'>
             <a
               className={`${s[`navbar-list-item`]} ${
-                currentPath === 'projects' ? s.selected : ''
+                currentPath === '/#projects' ? s.selected : ''
               }`}>
               <div className={s['navbar-list-item-img']}>
                 <img src='/media/icons/projects.png' alt='Projects' />
@@ -67,12 +73,12 @@ const NavBar = () => {
         </li>
         <li
           onClick={() => {
-            handleClick('contact');
+            handleClick('/#contact');
           }}>
           <LinkSmoothScroll href='/#contact'>
             <a
               className={`${s[`navbar-list-item`]} ${
-                currentPath === 'contact' ? s.selected : ''
+                currentPath === '/#contact' ? s.selected : ''
               }`}>
               <div className={s['navbar-list-item-img']}>
                 <img src='/media/icons/mail.png' alt='contact' />
