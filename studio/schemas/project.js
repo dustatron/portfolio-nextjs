@@ -39,6 +39,16 @@ export default {
       },
     },
     {
+      name: 'activeLink',
+      title: 'Active Link',
+      type: 'string',
+    },
+    {
+      name: 'githubLink',
+      title: 'github Link',
+      type: 'string',
+    },
+    {
       name: 'categories',
       title: 'Categories',
       type: 'array',

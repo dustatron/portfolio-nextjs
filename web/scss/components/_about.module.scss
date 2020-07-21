@@ -36,8 +36,15 @@
       margin: auto;
       color: $white;
       font-weight: 300;
+
       @include respond(tab-port) {
         width: 98%;
+      }
+
+      img {
+        display: block;
+        width: 20%;
+        margin: 20px auto;
       }
       li {
         padding: 2rem 0;
@@ -47,17 +54,17 @@
           padding: 2rem 0;
         }
       }
-      &-img {
-        width: 10%;
-        @include respond(tab-port) {
-          width: 50px;
-          margin: auto;
-        }
+      // &-img {
+      //   width: 10%;
+      //   @include respond(tab-port) {
+      //     width: 50px;
+      //     margin: auto;
+      //   }
 
-        img {
-          width: 100%;
-        }
-      }
+      // img {
+      //   width: 100%;
+      // }
+      // }
       &-copy {
         // display: none;
         width: 90%;

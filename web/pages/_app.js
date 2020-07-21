@@ -13,6 +13,10 @@ const _app = ({ Component, pageProps }) => {
           rel='stylesheet'></link>
       </Head>
       <div className='grid-container'>
+        <span className='mobile-show'>
+          {/* ///// For Mobile only \\\\\ */}
+          <NavBar />
+        </span>
         <div className='grid-container-left'>
           <NavBar />
         </div>
