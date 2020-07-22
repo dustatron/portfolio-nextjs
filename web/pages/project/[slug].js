@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import client from '../../client';
 import imageUrlBuilder from '@sanity/image-url';
 import BlockContent from '@sanity/block-content-to-react';
 import groq from 'groq';
 import { useTransition, animated } from 'react-spring';
+
+import Link from 'next/link';
 
 import s from '../../scss/pages/_project.module.scss';
 
@@ -13,6 +15,7 @@ const urlFor = (source) => {
 };
 
 const project = (props) => {
+  // const router = useRouter();
   const slideRight = {
     from: { opacity: 0, marginLeft: -200, marginRight: 200 },
     enter: { opacity: 1, marginLeft: 0, marginRight: 0 },
@@ -25,9 +28,21 @@ const project = (props) => {
   };
 
   const [direction, setDirection] = useState(slideRight);
-  const transition = useTransition(project, (project) => project.id, direction); // returns array, (item, item key, styling)
 
-  // deconstruct props
+  const transition = useTransition(
+    props.current,
+    (project) => project.id,
+    direction
+  ); // returns array, (item, item key, styling)
+
+  const currentIndex = props.all.findIndex(
+    (item) => item._id === props.current._id
+  );
+
+  const prevLinkId = currentIndex - 1;
+  const nextLinkId = currentIndex + 1;
+  const lastProject = props.all.length;
+
   const {
     title = 'Missing title',
     subtitle = 'Missing SubTitle',
@@ -38,46 +53,54 @@ const project = (props) => {
     hurdles = [],
     activeLink = '',
     githubLink = '',
-  } = props;
+  } = props.current;
+
+  const handleNavLink = (direct, index) => {
+    setDirection(direct);
+  };
 
   return (
     <div className={s['project']}>
       <div className={s['project-header']}>
-        <div className='project-header-nav'>
-          {/* {prevLinkId !== 0 ? (
+        <div className={s['project-header-nav']}>
+          {currentIndex !== 0 ? (
             <Link
-              // to={`/proj/${prevLinkId}`}
-              onClick={() => {
-                setDirection(slideLeft);
-                updateView(2, prevLinkId);
-              }}>
-              <div className='project-header-nav-prev'>
-                <div className='chevron'>
-                  <img src={`${prevArrow}`} alt='' />
+              href='/project/[slug]'
+              as={`/project/${props.all[prevLinkId].slug.current}`}>
+              <a
+                onClick={() => {
+                  handleNavLink(slideLeft, prevLinkId);
+                }}>
+                <div className={s['project-header-nav-prev']}>
+                  <div className={s['chevron']}>
+                    <img src='/media/icons/arrowleft.svg' alt='' />
+                  </div>
+                  Previous
                 </div>
-                Previous
-              </div>
+              </a>
             </Link>
           ) : (
             'First Project'
           )}
           {nextLinkId !== lastProject ? (
             <Link
-              // to={`/proj/${nextLinkId}`}
-              onClick={() => {
-                setDirection(slideRight);
-                updateView(2, nextLinkId);
-              }}>
-              <div className='project-header-nav-back'>
-                Next
-                <div className='chevron'>
-                  <img src={`${nextArrow}`} alt='' />
+              href='/project/[slug]'
+              as={`/project/${props.all[nextLinkId].slug.current}`}>
+              <a
+                onClick={() => {
+                  handleNavLink(slideRight, nextLinkId);
+                }}>
+                <div className={s['project-header-nav-back']}>
+                  Next
+                  <div className={s['chevron']}>
+                    <img src='/media/icons/arrowright.svg' alt='' />
+                  </div>
                 </div>
-              </div>
+              </a>
             </Link>
           ) : (
             ' Last Project'
-          )} */}
+          )}
         </div>
         <div className={s['project-header-title']}>{title}</div>
         <div className={s['project-header-img']}>
@@ -172,8 +195,9 @@ const project = (props) => {
   );
 };
 
-const query = groq`
+const queryCurrent = groq`
     *[_type == "project" && slug.current == $slug][0]{
+      _id,
       title,
       subtitle,
       "categories": categories[]->title,
@@ -186,9 +210,16 @@ const query = groq`
     }
 `;
 
-project.getInitialProps = async function (context) {
+const queryAll = groq`
+    *[_type == 'project']|order(publishedAt desc)
+  `;
+
+project.getInitialProps = async (context) => {
   const { slug = ' ' } = context.query;
-  return await client.fetch(query, { slug });
+  return {
+    current: await client.fetch(queryCurrent, { slug }),
+    all: await client.fetch(queryAll),
+  };
 };
 
 export default project;

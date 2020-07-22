@@ -8,6 +8,7 @@ import Contact from '../components/Contact';
 
 export default function Home(props) {
   const { projects, categories, aboutSection } = props;
+
   return (
     <div>
       <Header />

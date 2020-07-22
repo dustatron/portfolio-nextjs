@@ -5,9 +5,10 @@ import ProjectIcon from './ProjectIcon';
 
 const ProjectList = (props) => {
   const { projects = [], categories = [] } = props;
+  const firstSix = projects.slice(0, 6);
 
   const [selected, setSelected] = useState(0);
-  const [projectList, setProjectList] = useState(projects);
+  const [projectList, setProjectList] = useState(firstSix);
 
   const updateSelected = (index, value, id) => {
     setSelected(index);
@@ -22,7 +23,7 @@ const ProjectList = (props) => {
     }
 
     if (value === 'Show All') {
-      setProjectList(projects);
+      setProjectList(firstSix);
     } else {
       setProjectList(newList);
     }
@@ -51,9 +52,9 @@ const ProjectList = (props) => {
       </div>
       <div className={s['project-list-icons']}>
         {projectList &&
-          projectList.map((proj) => (
-            <ProjectIcon key={proj._id} project={proj} />
-          ))}
+          projectList
+            .slice(0, 6)
+            .map((proj) => <ProjectIcon key={proj._id} project={proj} />)}
       </div>
     </div>
   );
