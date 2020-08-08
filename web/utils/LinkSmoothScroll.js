@@ -1,6 +1,6 @@
 import React, { Children } from 'react';
 import Router from 'next/router';
-import smoothScroll from './smoothScroll';
+import smoothScroll from './SmoothScroll';
 
 // this HOC is taken from https://github.com/zeit/next.js/blob/master/lib/link.js and modified
 export default class LinkSmoothScroll extends React.Component {
