@@ -2,7 +2,6 @@
 @import '../components/project-icon.module';
 .project {
   // position: absolute;
-  width: 934px;
   min-height: 100vh;
   margin-bottom: 10rem;
   @include respond(tab-land) {
