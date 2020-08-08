@@ -18,11 +18,6 @@ export default {
       },
     },
     {
-      name: 'subtitle',
-      title: 'Sub Title',
-      type: 'string',
-    },
-    {
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
@@ -55,9 +50,19 @@ export default {
       of: [{ type: 'reference', to: { type: 'category' } }],
     },
     {
+      name: 'orderBy',
+      title: 'Order By',
+      type: 'number',
+    },
+    {
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
+    },
+    {
+      name: 'subtitle',
+      title: 'Sub Title',
+      type: 'string',
     },
     {
       name: 'details',
@@ -70,6 +75,9 @@ export default {
       type: 'blockContent',
     },
   ],
+  initialValue: {
+    orderBy: 10,
+  },
   preview: {
     select: {
       title: 'title',

@@ -18,5 +18,10 @@ export default {
       title: 'Order',
       type: 'number',
     },
+    {
+      name: 'important',
+      title: 'Important',
+      type: 'boolean',
+    },
   ],
 };

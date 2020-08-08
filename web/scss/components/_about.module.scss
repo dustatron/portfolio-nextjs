@@ -1,9 +1,15 @@
 @import '../main.scss';
 
 .about {
+  h2 {
+    font-weight: 600;
+  }
+  strong {
+    font-weight: 600;
+  }
   // position: relative;
   font-size: $default-font-size;
-  margin-bottom: 10em;
+  margin-bottom: 10rem;
   @include respond(tab-port) {
     margin-bottom: 8em;
   }
@@ -19,9 +25,23 @@
       }
     }
   }
+
+  &-profile-img {
+    margin: 0rem 0 4rem 0;
+    padding-top: 4rem;
+    text-align: center;
+    img {
+      border-radius: 50%;
+      height: 30rem;
+    }
+  }
+
   &-bottom {
     background: $light-blue;
     padding-bottom: 5rem;
+    &-body {
+      display: flex;
+    }
 
     &-title {
       padding: $title-padding;
@@ -32,7 +52,7 @@
       font-size: $header-size;
     }
     &-bullets {
-      width: 70%;
+      width: 80%;
       margin: auto;
       color: $white;
       font-weight: 300;
@@ -54,17 +74,6 @@
           padding: 2rem 0;
         }
       }
-      // &-img {
-      //   width: 10%;
-      //   @include respond(tab-port) {
-      //     width: 50px;
-      //     margin: auto;
-      //   }
-
-      // img {
-      //   width: 100%;
-      // }
-      // }
       &-copy {
         // display: none;
         width: 90%;

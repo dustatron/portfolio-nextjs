@@ -69,6 +69,25 @@
       margin: 2em 3%;
     }
   }
+  &-btn {
+    text-align: center;
+    button {
+      border: 1px solid $dark-blue;
+      border-radius: 7rem;
+      font-weight: 900;
+      padding: 1rem 3rem;
+      font-size: 1.3rem;
+      background: $light-blue;
+      color: $white;
+      transition: all 0.2s;
+      &:hover {
+        border: 1px solid $mid-grey;
+        background: $white;
+        color: $black;
+        transform: scale(1.05);
+      }
+    }
+  }
 }
 
 .active-box {

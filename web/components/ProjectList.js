@@ -5,7 +5,7 @@ import ProjectIcon from './ProjectIcon';
 
 const ProjectList = (props) => {
   const { projects = [], categories = [] } = props;
-  const firstSix = projects.slice(0, 6);
+  const firstSix = projects.sort((a, b) => a.orderBy - b.orderBy).slice(0, 6);
 
   const [selected, setSelected] = useState(0);
   const [projectList, setProjectList] = useState(firstSix);
@@ -37,17 +37,23 @@ const ProjectList = (props) => {
       </div>
       <div className={s['project-list-tech']}>
         {categories.map((tech, index) => (
-          <div
-            key={tech._id}
-            id={tech._id}
-            className={`${s[`project-list-tech-box`]} ${
-              selected === index ? s['active-box'] : ''
-            }`}
-            onClick={() => {
-              updateSelected(index, tech.title, tech._id);
-            }}>
-            {tech.title}
-          </div>
+          <>
+            {tech.important ? (
+              <div
+                key={tech._id}
+                id={tech._id}
+                className={`${s[`project-list-tech-box`]} ${
+                  selected === index ? s['active-box'] : ''
+                }`}
+                onClick={() => {
+                  updateSelected(index, tech.title, tech._id);
+                }}>
+                {tech.title}
+              </div>
+            ) : (
+              ''
+            )}
+          </>
         ))}
       </div>
       <div className={s['project-list-icons']}>
@@ -56,6 +62,13 @@ const ProjectList = (props) => {
             .slice(0, 6)
             .map((proj) => <ProjectIcon key={proj._id} project={proj} />)}
       </div>
+      {/* <div className={s['project-list-btn']}>
+        <Link href='/all_projects'>
+          <a>
+            <button>All Projects</button>
+          </a>
+        </Link>
+      </div> */}
     </div>
   );
 };

@@ -90,7 +90,7 @@ const NavBar = () => {
         <li>
           <a
             className={s['navbar-list-item']}
-            href='https://docs.google.com/document/d/1fIFS3Dhcqr3sVAJxUaqoQ-Ws92Yl9xRoHjzTJI_rTGE/edit?usp=sharing'
+            href='https://docs.google.com/document/d/1ofxmg0lp1MHa_TD1GXslhHjPdN8PJMOMViytRbM8xt8/edit?usp=sharing'
             target='_blank'
             rel='noopener noreferrer'>
             <div className={s['navbar-list-item-img']}>

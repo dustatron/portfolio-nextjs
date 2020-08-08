@@ -8,18 +8,19 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   overflow: hidden;
   z-index: 0;
-  @include respond(phone) {
-    margin: 10px auto;
-  }
 
   @include respond(tab-land) {
     max-width: 450px;
     min-width: 70%;
-    height: 350px;
+    height: 300px;
     margin: 10px auto;
-    @include respond(tab-port) {
-      height: 220px;
-    }
+  }
+  @include respond(tab-port) {
+    height: 320px;
+  }
+  @include respond(phone) {
+    margin: 10px auto;
+    height: 220px;
   }
 
   &-bar {

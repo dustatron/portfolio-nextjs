@@ -34,7 +34,7 @@ body {
 }
 
 .grid-container {
-  width: 1400px;
+  width: 1410px;
   // min-width: 1300px;
   position: relative;
   margin: 0 2%;
@@ -45,6 +45,13 @@ body {
   grid-row-gap: 0px;
   grid-template-areas: '. . .';
   @include respond(tab-land) {
+    // width: 1450px;
+    margin: 0;
+    width: auto;
+    max-width: 100%;
+  }
+  @include respond(big-desktop) {
+    width: 1650px;
     margin: 0;
     width: auto;
     max-width: 100%;
