@@ -66,27 +66,19 @@
         fill: $light-blue;
       }
     }
-    // img {
-    //   display: none;
-    //   transition: all 0.3s;
-    //   &:hover {
-    //     transform: scale(1.2);
-    //   }
-    //   display: block;
-    //   width: 25px;
-    //   padding-top: 20px;
-    //   @include respond(tab-port) {
-    //     width: 18px;
-    //   }
-    // }
   }
 
   &-image {
     position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
     bottom: -5px;
-    transform: translate(50%, 0%);
+
     @include respond(tab-land) {
       display: none;
+    }
+    @include respond(big-desktop) {
+      left: 50%;
     }
   }
 }

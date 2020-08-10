@@ -27,7 +27,7 @@
     text-align: center;
     img {
       border-radius: 50%;
-      height: 25rem;
+      width: 25rem;
     }
   }
 
@@ -55,13 +55,15 @@
       @include respond(tab-port) {
         width: 98%;
       }
+      @include respond(big-desktop) {
+        width: 50%;
+      }
 
       img {
         padding-right: 2rem;
         display: block;
-        width: 15%;
+        width: 8rem;
         margin: 20px auto;
-        float: left;
       }
       li {
         padding: 2rem 0;
