@@ -6,6 +6,10 @@
   width: 100%;
   height: 80rem;
   background: $light-blue;
+
+  strong {
+    font-weight: 600;
+  }
   // margin-bottom: 10em;
   @include respond(tab-port) {
     height: auto;

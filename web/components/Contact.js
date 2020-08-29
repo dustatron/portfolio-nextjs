@@ -1,22 +1,19 @@
 import s from '../scss/components/_contact.module.scss';
+import PropTypes from 'react';
+import BlockContent from '@sanity/block-content-to-react';
+import client from '../client';
 
-const Contact = () => {
+const Contact = ({ content }) => {
+  const { title, body } = content;
   return (
     <div className={s['contact']} id='contact'>
-      <div className={s['contact-title']}>Lets Talk</div>
+      <div className={s['contact-title']}>{title ? title : ''}</div>
       <div className={s['contact-paragraph']}>
-        Wanna get in touch or talk about a project? Feel Free to contact me via
-        email at
-        <a href='mailto:dustymccord@gmail.com'>
-          <span className={s['contact-paragraph-name']}>
-            {' '}
-            dustymccord@gmail.com{' '}
-          </span>
-        </a>
-        and view
-        <a href='https://docs.google.com/document/d/1fIFS3Dhcqr3sVAJxUaqoQ-Ws92Yl9xRoHjzTJI_rTGE/edit'>
-          <span className={s['contact-paragraph-name']}> my Resume here.</span>
-        </a>
+        <BlockContent
+          className={s['project-details-right-detail']}
+          blocks={body}
+          {...client.config()}
+        />
       </div>
       <div className={s['contact-buttons']}>
         <a href='mailto:dustymccord@gmail.com'>
@@ -54,6 +51,10 @@ const Contact = () => {
       </div>
     </div>
   );
+};
+
+Contact.propTypes = {
+  content: PropTypes.object,
 };
 
 export default Contact;
