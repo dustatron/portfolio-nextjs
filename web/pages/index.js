@@ -1,20 +1,24 @@
-import groq from 'groq';
-import client from '../client';
+import groq from "groq";
+import client from "../client";
 
-import Header from '../components/Header';
-import About from '../components/About';
-import ProjectList from '../components/ProjectList';
-import Contact from '../components/Contact';
+import Header from "../components/Header";
+import About from "../components/About";
+import ProjectList from "../components/ProjectList";
+import Contact from "../components/Contact";
 
 export default function Home(props) {
-  const { projects, categories, aboutSection, contactSection } = props;
-
+  const { projects, categories, sections } = props;
+  console.log("section", sections);
   return (
     <div>
-      <Header />
-      <About content={aboutSection} />
+      <Header
+        content={sections.find((item) => item.slug.current === "header")}
+      />
+      <About content={sections.find((item) => item.slug.current === "about")} />
       <ProjectList projects={projects} categories={categories} />
-      <Contact content={contactSection} />
+      <Contact
+        content={sections.find((item) => item.slug.current === "contact")}
+      />
     </div>
   );
 }
@@ -26,10 +30,5 @@ Home.getInitialProps = async () => ({
   categories: await client.fetch(groq`
     *[_type == 'category']|order(order asc)
   `),
-  aboutSection: await client.fetch(groq`
-    *[_type == 'section' && slug.current == 'about'][0]
-  `),
-  contactSection: await client.fetch(groq`
-    *[_type == 'section' && slug.current == 'contact'][0]
-  `),
+  sections: await client.fetch(groq`*[_type == 'section']`),
 });

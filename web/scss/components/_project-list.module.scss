@@ -1,4 +1,4 @@
-@import '../main.scss';
+@import "../main.scss";
 
 .project-list {
   font-size: $default-font-size;
@@ -21,7 +21,7 @@
     justify-content: flex-start;
     margin: auto;
     width: 90%;
-    justify-content: center;
+    justify-content: flex-start;
     @include respond(tab-port) {
       font-size: 1.5rem;
       width: 100%;
@@ -29,9 +29,9 @@
 
     &-box {
       cursor: pointer;
-      width: 110px;
+      width: 120px;
       max-height: 30px;
-      padding: 1% 0;
+      padding: 10px 0;
       text-align: center;
       margin: 0 10px 10px 0px;
       color: $white;

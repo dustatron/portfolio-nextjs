@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import s from '../scss/components/_project-list.module.scss';
-import ProjectIcon from './ProjectIcon';
+import s from "../scss/components/_project-list.module.scss";
+import ProjectIcon from "./ProjectIcon";
 
 const ProjectList = (props) => {
   const { projects = [], categories = [] } = props;
@@ -22,7 +22,7 @@ const ProjectList = (props) => {
       }
     }
 
-    if (value === 'Show All') {
+    if (value === "Show All") {
       setProjectList(firstSix);
     } else {
       setProjectList(newList);
@@ -31,32 +31,33 @@ const ProjectList = (props) => {
   };
 
   return (
-    <div className={s['project-list']}>
-      <div className={s['project-list-title']} id='projects'>
+    <div className={s["project-list"]}>
+      <div className={s["project-list-title"]} id="projects">
         My Recent Projects
       </div>
-      <div className={s['project-list-tech']}>
+      <div className={s["project-list-tech"]}>
         {categories.map((tech, index) => (
-          <>
+          <div key={tech._id}>
             {tech.important ? (
               <div
                 key={tech._id}
                 id={tech._id}
                 className={`${s[`project-list-tech-box`]} ${
-                  selected === index ? s['active-box'] : ''
+                  selected === index ? s["active-box"] : ""
                 }`}
                 onClick={() => {
                   updateSelected(index, tech.title, tech._id);
-                }}>
+                }}
+              >
                 {tech.title}
               </div>
             ) : (
-              ''
+              ""
             )}
-          </>
+          </div>
         ))}
       </div>
-      <div className={s['project-list-icons']}>
+      <div className={s["project-list-icons"]}>
         {projectList &&
           projectList
             .slice(0, 6)
