@@ -12,7 +12,7 @@
     "@sanity/client": "^1.149.18",
     "@sanity/image-url": "^0.140.19",
     "groq": "^1.149.16",
-    "next": "9.4.4",
+    "next": "11.1.3",
     "next-react-svg": "^1.1.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
