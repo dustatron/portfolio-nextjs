@@ -37,11 +37,6 @@ const Header = ({ content }) => {
       </div>
       <div className={s["header-image"]}>
         <TechStuffSVG />
-        {/* <img
-          src='/media/icons/tech-stuff-1.svg'
-          alt='tech-stuff graphic'
-          id='about'
-        /> */}
       </div>
     </div>
   );

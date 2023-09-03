@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import client from '../../client';
 import imageUrlBuilder from '@sanity/image-url';
 import BlockContent from '@sanity/block-content-to-react';
@@ -14,8 +14,7 @@ const urlFor = (source) => {
   return imageUrlBuilder(client).image(source);
 };
 
-const project = (props) => {
-  // const router = useRouter();
+const project = ({ current, all }) => {
   const slideRight = {
     from: { opacity: 0, marginLeft: -200, marginRight: 200 },
     enter: { opacity: 1, marginLeft: 0, marginRight: 0 },
@@ -30,18 +29,18 @@ const project = (props) => {
   const [direction, setDirection] = useState(slideRight);
 
   const transition = useTransition(
-    props.current,
+    current,
     (project) => project.id,
     direction
   ); // returns array, (item, item key, styling)
 
-  const currentIndex = props.all.findIndex(
-    (item) => item._id === props.current._id
+  const currentIndex = all.findIndex(
+    (item) => item._id === current._id
   );
 
   const prevLinkId = currentIndex - 1;
   const nextLinkId = currentIndex + 1;
-  const lastProject = props.all.length;
+  const lastProject = all.length;
 
   const {
     title = 'Missing title',
@@ -53,7 +52,7 @@ const project = (props) => {
     hurdles = [],
     activeLink = '',
     githubLink = '',
-  } = props.current;
+  } = current;
 
   const handleNavLink = (direct, index) => {
     setDirection(direct);
@@ -66,7 +65,7 @@ const project = (props) => {
           {currentIndex !== 0 ? (
             <Link
               href='/project/[slug]'
-              as={`/project/${props.all[prevLinkId].slug.current}`}>
+              as={`/project/${all[prevLinkId].slug.current}`}>
               <a
                 onClick={() => {
                   handleNavLink(slideLeft, prevLinkId);
@@ -85,7 +84,7 @@ const project = (props) => {
           {nextLinkId !== lastProject ? (
             <Link
               href='/project/[slug]'
-              as={`/project/${props.all[nextLinkId].slug.current}`}>
+              as={`/project/${all[nextLinkId].slug.current}`}>
               <a
                 onClick={() => {
                   handleNavLink(slideRight, nextLinkId);
@@ -104,7 +103,7 @@ const project = (props) => {
         </div>
         <div className={s['project-header-title']}>{title}</div>
         <div className={s['project-header-img']}>
-          {transition.map(({ item, key, props }) => (
+          {transition.map(({ _, key, props }) => (
             <animated.div key={key} style={props}>
               <div className={s['project-header-img-body']}>
                 <div className={s['project-icon-bar']}>
@@ -162,10 +161,10 @@ const project = (props) => {
         <div className={s['project-tech-bottom']}>
           {categories
             ? categories.map((item) => (
-                <div key={item._id} className={s['project-tech-bottom-item']}>
-                  {item}
-                </div>
-              ))
+              <div key={item._id} className={s['project-tech-bottom-item']}>
+                {item}
+              </div>
+            ))
             : ''}
         </div>
       </div>
@@ -177,18 +176,22 @@ const project = (props) => {
         <div className={s['project-details-right']}>
           <div className={s['project-details-right-title']}>{subtitle}</div>
           <BlockContent
-            className={s['project-details-right-detail']}
+            // className={s['project-details-right-detail']}
             blocks={details}
             imageOptions={{ w: 320, h: 240, fit: 'max' }}
             {...client.config()}
           />
-          <div className={s['project-details-right-title']}> Hurdles </div>
-          <BlockContent
-            className={s['project-details-right-detail']}
-            blocks={hurdles}
-            imageOptions={{ w: 320, h: 240, fit: 'max' }}
-            {...client.config()}
-          />
+          {hurdles && !!hurdles.length && (
+            <>
+              <div className={s['project-details-right-title']}> Hurdles </div>
+              <BlockContent
+                // className={s['project-details-right-detail']}
+                blocks={hurdles}
+                imageOptions={{ w: 320, h: 240, fit: 'max' }}
+                {...client.config()}
+              />
+            </>
+          )}
         </div>
       </div>
     </div>
